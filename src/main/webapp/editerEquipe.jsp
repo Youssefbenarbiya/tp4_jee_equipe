@@ -20,15 +20,15 @@
       <form action="update.do" method="post" >
       <div hidden class="form-group"  >
        <label class="control-label">ID Equipe :</label>
-       <input type="text" name="id" class="form-control" value="${Equipe.idEquipe}"/>
+       <input type="text" name="id" class="form-control" value="${equipe.idEquipe}"/>
       </div>
       <div class="form-group">
        <label class="control-label">Nom Equipe :</label>
-       <input type="text" name="nom" class="form-control" value="${Equipe.nomEquipe}"/>
+       <input type="text" name="nom" class="form-control" value="${equipe.nomEquipe}"/>
       </div>
       <div class="form-group">
        <label class="control-label">rank :</label>
-       <input type="text" name="rank" class="form-control" value="${Equipe.rank}"/>
+       <input type="text" name="rank" class="form-control" value="${equipe.rank}"/>
       </div>
       <div>
         <button type="submit" class="btn btn-primary">Modifier</button>
