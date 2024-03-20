@@ -23,7 +23,7 @@
        <input type="text" name="nom" class="form-control"/>
       </div>
       <div class="form-group">
-       <label class="control-label">rank :</label>
+       <label class="control-label">Rank :</label>
        <input type="text" name="rank" class="form-control"/>
       </div>
       <div>
