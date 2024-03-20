@@ -16,14 +16,14 @@ public class EquipeDaoImpl implements IEquipeDao {
 	public Equipe save(Equipe p) {
 		 Connection conn=SingletonConnection.getConnection();
 	       try {
-			PreparedStatement ps= conn.prepareStatement("INSERT INTO equipe(NOM_equipe,rank) VALUES(?,?)");
+			PreparedStatement ps= conn.prepareStatement("INSERT INTO EQUIPES(NOM_Equipe,rank) VALUES(?,?)");
 			ps.setString(1, p.getNomEquipe());
 			ps.setDouble(2, p.getrank());
 			ps.executeUpdate();
 			
 			
 			PreparedStatement ps2= conn.prepareStatement
-					("SELECT MAX(ID_equipe) as MAX_ID FROM equipe");
+					("SELECT MAX(ID_Equipe) as MAX_ID FROM EQUIPES");
 			ResultSet rs =ps2.executeQuery();
 			if (rs.next()) {
 				p.setIdEquipe(rs.getLong("MAX_ID"));
@@ -40,17 +40,17 @@ public class EquipeDaoImpl implements IEquipeDao {
 	}
 
 	@Override
-	public List<Equipe> equipeParMC(String mc) {
+	public List<Equipe> equipesParMC(String mc) {
 	      List<Equipe> prods= new ArrayList<Equipe>();
 	       Connection conn=SingletonConnection.getConnection();
 	       try {
-			PreparedStatement ps= conn.prepareStatement("select * from equipe where NOM_equipe LIKE ?");
+			PreparedStatement ps= conn.prepareStatement("select * from EQUIPES where NOM_Equipe LIKE ?");
 			ps.setString(1, "%"+mc+"%");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Equipe p = new Equipe();
-				p.setIdEquipe(rs.getLong("ID_equipe"));
-				p.setNomEquipe(rs.getString("NOM_equipe"));
+				p.setIdEquipe(rs.getLong("ID_Equipe"));
+				p.setNomEquipe(rs.getString("NOM_Equipe"));
 				p.setrank(rs.getDouble("rank"));
 				prods.add(p);								
 			}
@@ -69,13 +69,13 @@ public class EquipeDaoImpl implements IEquipeDao {
 		   Connection conn=SingletonConnection.getConnection();
 		    Equipe p = new Equipe();
 	       try {
-			PreparedStatement ps= conn.prepareStatement("select * from equipe where ID_equipe = ?");
+			PreparedStatement ps= conn.prepareStatement("select * from EQUIPES where ID_Equipe = ?");
 			ps.setLong(1, id);
 			ResultSet rs = ps.executeQuery();
 			if  (rs.next()) {
 				
-				p.setIdEquipe(rs.getLong("ID_equipe"));
-				p.setNomEquipe(rs.getString("NOM_equipe"));
+				p.setIdEquipe(rs.getLong("ID_Equipe"));
+				p.setNomEquipe(rs.getString("NOM_Equipe"));
 				p.setrank(rs.getDouble("rank"));
 			}
 				
@@ -90,7 +90,7 @@ public class EquipeDaoImpl implements IEquipeDao {
 	public Equipe updateEquipe(Equipe p) {
 		Connection conn=SingletonConnection.getConnection();
 	       try {
-			PreparedStatement ps= conn.prepareStatement("UPDATE equipe SET NOM_equipe=?,rank=? WHERE ID_equipe=?");
+			PreparedStatement ps= conn.prepareStatement("UPDATE EQUIPES SET NOM_Equipe=?,rank=? WHERE ID_Equipe=?");
 			ps.setString(1, p.getNomEquipe());
 			ps.setDouble(2, p.getrank());
 			ps.setLong(3, p.getIdEquipe());
@@ -108,7 +108,7 @@ public class EquipeDaoImpl implements IEquipeDao {
 	public void deleteEquipe(Long id) {
 		 Connection conn=SingletonConnection.getConnection();
 	       try {
-			PreparedStatement ps= conn.prepareStatement("DELETE FROM equipe WHERE ID_equipe = ?");
+			PreparedStatement ps= conn.prepareStatement("DELETE FROM EQUIPES WHERE ID_Equipe = ?");
 			ps.setLong(1, id);
 			ps.executeUpdate();
 			ps.close();
