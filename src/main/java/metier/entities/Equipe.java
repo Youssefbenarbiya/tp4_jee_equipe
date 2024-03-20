@@ -10,22 +10,22 @@ public class Equipe implements Serializable{
 	public Equipe() {
 		super();
 	}
-	public Equipe(String nomEquipe, double rank) {
+	public Equipe(String nomEquipe, double rank2) {
 		super();
 		this.nomEquipe = nomEquipe;
-		this.rank = rank;
+		this.rank = rank2;
 	}
 	public Long getIdEquipe() {
 		return idEquipe;
 	}
-	public void Equipe(Long idEquipe) {
+	public void setIdEquipe(Long idEquipe) {
 		this.idEquipe = idEquipe;
 	}
 	public String getNomEquipe() {
 		return nomEquipe;
 	}
-	public void setNomEquipe(long l) {
-		this.nomEquipe = l;
+	public void setNomEquipe(String nomEquipe) {
+		this.nomEquipe = nomEquipe;
 	}
 	public double getrank() {
 		return rank;
@@ -37,5 +37,7 @@ public class Equipe implements Serializable{
 	public String toString() {
 		return "Equipe [idEquipe=" + idEquipe + ", nomEquipe=" + nomEquipe + ", rank=" + rank + "]";
 	}
+	
+	
 	
 }
