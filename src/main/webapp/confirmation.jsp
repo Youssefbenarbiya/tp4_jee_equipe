@@ -14,28 +14,25 @@
 <div class="container">
 <div class="card">
   <div class="card-header">
-    Modification des Equipes
+    Confirmation Ajout Equipe
   </div>
   <div class="card-body">
-      <form action="update.do" method="post" >
-      <div hidden class="form-group"  >
-       <label class="control-label">ID Equipe :</label>
-       <input type="text" name="id" class="form-control" value="${Equipe.idEquipe}"/>
-      </div>
+      
       <div class="form-group">
+       <label class="control-label">ID :</label>
+       <input type="text" name="Nom" class="form-control" value="${equipe.idEquipe }"/>
+         
        <label class="control-label">Nom Equipe :</label>
-       <input type="text" name="nom" class="form-control" value="${Equipe.nomEquipe}"/>
+       <input type="text" name="Nom" class="form-control" value="${equipe.nomEquipe }"/>
       </div>
-      <div class="form-group">
+      
+      <div class="control-label">
        <label class="control-label">rank :</label>
-       <input type="text" name="rank" class="form-control" value="${Equipe.rank}"/>
+       <input type="text" name="rank" class="form-control" value="${equipe.rank }"/>
       </div>
-      <div>
-        <button type="submit" class="btn btn-primary">Modifier</button>
-      </div>
-      </form>     
+       </div>
+         
   </div>
-</div>
 </div>
 </body>
 </html>
