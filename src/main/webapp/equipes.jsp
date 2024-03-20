@@ -18,7 +18,7 @@
   </div>
   <div class="card-body">
       <form action="chercher.do" method="get">
-        <label>Mot Clé</label>
+        <label>Mot ClÃ©</label>
         <input type="text" name="motCle" value="${model.motCle}"/>
         <button type="submit" class="btn btn-primary">Chercher</button>
       </form>     
@@ -26,12 +26,12 @@
         <tr>
           <th>ID</th><th>Nom Equipe</th><th>rank</th><th>Suppression<th>Edition</th>
          </tr>
-         <c:forEach items="${model.Equipes}" var="p">
+         <c:forEach items="${model.equipes}" var="p">
            <tr>
               <td>${p.idEquipe }</td>
               <td>${p.nomEquipe }</td>
               <td>${p.rank }</td>
-              <td><a onclick="return confirm('Etes-vous sûr ?')" href="supprimer.do?id=${p.idEquipe }">Supprimer</a></td>
+              <td><a onclick="return confirm('Etes-vous sÃ»r ?')" href="supprimer.do?id=${p.idEquipe }">Supprimer</a></td>
                <td><a href="editer.do?id=${p.idEquipe }">Edit</a></td>
            </tr>
          </c:forEach>        
