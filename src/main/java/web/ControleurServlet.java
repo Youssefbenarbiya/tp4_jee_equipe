@@ -31,17 +31,17 @@ public class ControleurServlet extends HttpServlet {
 		String path=request.getServletPath();
 		if (path.equals("/index.do"))
 		{
-			request.getRequestDispatcher("Equipes.jsp").forward(request,response);
+			request.getRequestDispatcher("equipes.jsp").forward(request,response);
 		}
 		else if (path.equals("/chercher.do"))
 		{
 			String motCle=request.getParameter("motCle");
 			EquipeModele model= new EquipeModele();
 			model.setMotCle(motCle);
-			List<Equipe> prods = metier.EquipesParMC(motCle);
+			List<Equipe> prods = metier.equipesParMC(motCle);
 			model.setEquipes(prods);
 			request.setAttribute("model", model);
-			request.getRequestDispatcher("Equipes.jsp").forward(request,response);
+			request.getRequestDispatcher("equipes.jsp").forward(request,response);
 		}
 		else if (path.equals("/saisie.do")  )
 		{
@@ -50,9 +50,14 @@ public class ControleurServlet extends HttpServlet {
 		else if (path.equals("/save.do")  && request.getMethod().equals("POST"))
 		{
 		    String nom=request.getParameter("nom");
-			double rank = Double.parseDouble(request.getParameter("rank"));
+		    String rankParameter = request.getParameter("rank");
+		    System.out.println("rank Parameter: " + rankParameter); // Debugging
+		    double rank = (rankParameter != null && !rankParameter.isEmpty()) ? Double.parseDouble(rankParameter) : 0.0;
+		    System.out.println("Parsed rank: " + rank); // Debugging
+
+
 			Equipe p = metier.save(new Equipe(nom,rank));
-			request.setAttribute("Equipe", p);
+			request.setAttribute("equipe", p);
 			request.getRequestDispatcher("confirmation.jsp").forward(request,response);
 		}
 		else if (path.equals("/supprimer.do"))
@@ -67,20 +72,20 @@ public class ControleurServlet extends HttpServlet {
 		{
 			Long id= Long.parseLong(request.getParameter("id"));
 		    Equipe p = metier.getEquipe(id);
-		    request.setAttribute("Equipe", p);
+		    request.setAttribute("equipe", p);
 			request.getRequestDispatcher("editerEquipe.jsp").forward(request,response);
 		}
 		else if (path.equals("/update.do")  )
 		{
 			 Long id = Long.parseLong(request.getParameter("id"));
 			 String nom=request.getParameter("nom");
-			 double rank = Double.parseDouble(request.getParameter("rank"));
+			 double rank =Double.parseDouble(request.getParameter("rank"));
 			 Equipe p = new Equipe();
 			 p.setIdEquipe(id);
 			 p.setNomEquipe(nom);
 			 p.setrank(rank);
 			 metier.updateEquipe(p);
-			 request.setAttribute("Equipe", p);
+			 request.setAttribute("equipe", p);
 			 request.getRequestDispatcher("confirmation.jsp").forward(request,response);
 		}
 		else
