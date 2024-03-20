@@ -7,7 +7,7 @@ import metier.entities.Equipe;
 
 public class EquipeModele {
 	private String motCle;
-	List<Equipe> Equipes = new ArrayList<>();
+	List<Equipe> equipes = new ArrayList<>();
 	
 	
 	public String getMotCle() {
@@ -17,10 +17,10 @@ public class EquipeModele {
 		this.motCle = motCle;
 	}
 	public List<Equipe> getEquipes() {
-		return Equipes;
+		return equipes;
 	}
-	public void setEquipes(List<Equipe> Equipes) {
-		this.Equipes = Equipes;
+	public void setEquipes(List<Equipe> equipes) {
+		this.equipes = equipes;
 	}
 	
 	
